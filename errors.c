@@ -40,7 +40,8 @@ int _eputchar(char c)
 }
 
 /**
- * _putfd: write character c to fd
+ * _putfd - write character c to fd
+ *
  * @c: character to print
  * @fd: filedescriptor to write to
  * Return: 1 on success.
@@ -62,7 +63,8 @@ int _putfd(char c, int fd)
 }
 
 /**
- * _putsfd: print input string
+ * _putsfd - print input string
+ *
  * @str: string to print
  * @fd: filedescriptor to write to
  * Return: the number of chars put
