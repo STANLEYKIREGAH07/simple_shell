@@ -10,7 +10,7 @@ int main() {
 
     while (1) 
     {
-        printf("#cisfun$ ");
+       write(1,"#cisfun$ ",9);
         
         fflush(stdout);
         read_size = read(STDIN_FILENO, input, MAX_INPUT_SIZE);
