@@ -18,8 +18,10 @@ int main() {
         if (read_size == 0) 
             break;
 
-        /*if (_strcmp(input, "exit") == 0)
-        break;*//*for exit*/
+        if (_strcmp(input, "exit") == 0)
+        {
+            break;
+            }
 
         parse_input(input, tokens, &i);
 
