@@ -14,11 +14,13 @@ void parse_input(char* input, char** tokens, int* tokens_num)
     char* a;
 
     a = " \t\n\r\a";
+    *tokens_num = 0;
     token = strtok(input, a);
 
-    for (*tokens_num = 0;token != NULL && *tokens_num < MAX_NUM_TOKENS; (*tokens_num)++) 
+    while (token != NULL && *tokens_num < MAX_NUM_TOKENS) 
     {
         tokens[*tokens_num] = token;
+        (*tokens_num)++;
         token = strtok(NULL, a);
     }
     tokens[*tokens_num] = NULL;
