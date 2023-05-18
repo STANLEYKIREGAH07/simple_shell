@@ -62,7 +62,6 @@ int main(int ac, char **argv)
         cmd(argv);
     }
 
-    free(b);
-    free(b1);
+
     return (0);
 }
