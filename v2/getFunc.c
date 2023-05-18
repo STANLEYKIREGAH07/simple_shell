@@ -10,8 +10,9 @@
 
 void parse_input(char* input, char** tokens, int* tokens_num) 
 {
-    char* token;
     char* a;
+    char* token;
+    
 
     a = " \t\n\r\a";
     token = strtok(input, a);
