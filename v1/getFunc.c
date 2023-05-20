@@ -1,5 +1,29 @@
 #include "main.h"
 
+/**
+ * parse_input - function is to parse the input string into separate tokens. 
+ * @input: pointer to character.
+ * @tokens: pointer to an array of pointers to characters (double pointer).
+ * @tokens_num: pointer to integer
+ * Return: 
+*/
+
+void parse_input(char* input, char** tokens, int* tokens_num) 
+{
+    char* a;
+    char* token;
+    
+
+    a = " \t\n\r\a";
+    token = strtok(input, a);
+
+    for (*tokens_num = 0;token != NULL && *tokens_num < MAX_NUM_TOKENS; (*tokens_num)++) 
+    {
+        tokens[*tokens_num] = token;
+        token = strtok(NULL, a);
+    }
+    tokens[*tokens_num] = NULL;
+}
 
 /**
  * _putchar - writes the character c to stdout
