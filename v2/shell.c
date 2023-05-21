@@ -1,5 +1,10 @@
 #include "main.h"
-
+/*
+ *main - reproduce the behavior of shell.
+ * @argc: integer
+ * @argv: double pointer
+ * Return: output of sh
+ **/
 
 
 int main(int argc, char **argv)
@@ -8,13 +13,13 @@ int main(int argc, char **argv)
 	size_t a_size;
 	ssize_t read;
 	char *args[2];
-	pid_t pid;
+	pid_t p;
 	int status;
 	(void)argc;
 	(void)argv;
 	a = NULL;
 	a_size = 0;
-    args[1] = NULL;
+	args[1] = NULL;
 	while (1)
 	{
 		write(1, "#cisfun$ ", 9);
@@ -32,8 +37,8 @@ int main(int argc, char **argv)
 		if (strcmp(a, "exit") == 0)
 			break;
 		args[0] = strtok(a, " ");
-		pid = fork();
-		if (pid <= 0)
+		p = fork();
+		if (p <= 0)
 		{
 			execve(args[0], args, NULL);
 			perror("./shell ");
