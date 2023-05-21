@@ -1,6 +1,6 @@
 #include "main.h"
-/*
- *main - reproduce the behavior of shell.
+/**
+ * main - reproduce the behavior of shell.
  * @argc: integer
  * @argv: double pointer
  * Return: output of sh
@@ -34,8 +34,6 @@ int main(int argc, char **argv)
 		{
 			a[read - 1] = '\0';
 		}
-		if (strcmp(a, "exit") == 0)
-			break;
 		args[0] = strtok(a, " ");
 		p = fork();
 		if (p <= 0)
