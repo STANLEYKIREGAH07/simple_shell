@@ -40,13 +40,15 @@ void tokeninput(char *input, char **arg)
 
 void execmd(char **arg)
 {
+	char *errormes;
 
-    if (execvp(arg[0], arg) == -1)
-    {
-        char *errormes = "./shell: No such file or directory\n";
-        write(2, errormes, strlen(errormes));
-        _exit(1);
-    }
+	errormes = "./shell: No such file or directory\n";
+
+	if (execvp(arg[0], arg) == -1)
+	{
+		write(2, errormes, strlen(errormes));
+		_exit(1);
+	}
 }
 
 /**
