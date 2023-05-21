@@ -5,13 +5,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <string.h>
+#include <sys/types.h>
 #include <sys/wait.h>
+#include <string.h>
 
+#define MAX_ARGS 64
 
 int _putchar(char c);
 void _print(char *str);
 int _strcmp(char *s1, char *s2);
+void _prompt(void);
+void execmd(char **arg);
+void tokeninput(char *input, char **arg);
+int _strlen(char *s);
 
 #endif
-
