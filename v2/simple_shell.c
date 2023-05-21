@@ -9,10 +9,13 @@
 int main(int argc, char **argv)
 {
 	char *input = NULL;
+	char *arg[MAX_ARGS];
 	size_t input_s = 0;
 	ssize_t read;
 	pid_t p;
 	int status;
+	(void)argc;
+	(void)argv;
 
 	while (1)
 	{
@@ -28,7 +31,6 @@ int main(int argc, char **argv)
 		{
 			input[read - 1] = '\0';
 		}
-		char *arg[MAX_ARGS];
 
 		tokeninput(input, arg);
 		out(input);
