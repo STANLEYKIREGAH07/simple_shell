@@ -49,3 +49,15 @@ void execmd(char **arg)
 	}
 }
 
+/**
+ *out - Implement the exit built-in, that exits the shell
+ *@input: pointer to char
+ *Return: exit.
+*/
+void out(char *input)
+{
+	if (_strcmp(input, "exit") == 0)
+	{
+		break;
+	}
+}

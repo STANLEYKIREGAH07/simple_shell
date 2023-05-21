@@ -15,6 +15,7 @@ int _putchar(char c);
 void _print(char *str);
 int _strcmp(char *s1, char *s2);
 void _prompt(void);
+void out(char *input);
 void execmd(char **arg);
 void tokeninput(char *input, char **arg);
 int _strlen(char *s);
