@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -19,14 +18,13 @@ int _putchar(char c)
 */
 void _print(char *str)
 {
-    int i;
+	int i;
 
-    for (i = 0; str[i]; i++)
-    {
-        _putchar(str[i]);
-    }
+	for (i = 0; str[i]; i++)
+	{
+		_putchar(str[i]);
+	}
 }
-
 
 /**
  * _strcmp -  function that compares two strings.
@@ -37,15 +35,15 @@ void _print(char *str)
 
 int _strcmp(char *s1, char *s2)
 {
-        int res = 0;
+	int res = 0;
 
-        while (*s1 == *s2 && *s1 != '\0')
-        {
-                s1++;
-                s2++;
-        }
-        if (s1 != s2)
-                res = *s1 - *s2;
+	while (*s1 == *s2 && *s1 != '\0')
+	{
+		s1++;
+		s2++;
+	}
+	if (s1 != s2)
+		res = *s1 - *s2;
 
-        return (res);
+	return (res);
 }
