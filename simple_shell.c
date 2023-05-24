@@ -10,6 +10,7 @@
 int main(int argc, char **argv)
 {
 	char *input = NULL;
+	char *arg[MAX_ARGS];
 	size_t input_s = 0;
 	ssize_t read;
 	pid_t p;
@@ -27,23 +28,23 @@ int main(int argc, char **argv)
 			if (feof(stdin))
 				break;
 		}
-		if (input[read - 1] == '\n')
-			input[read - 1] = '\0';
-		else
-			input[read] = '\0';
-		if (arg_count(input))
-		{
-			_print("./shell: No such file or directory\n");
-			continue;
-		}
+		 if (input[read - 1] == '\n')
+        {
+            input[read - 1] = '\0';
+        }
+
+		
+		tokeninput(input, arg);
+		out(input);
 		argv[0] = strtok(input, " ");
 		p = fork();
-		if (p <= 0)
+		if (p == -1)
 		{
-			execvp(argv[0], argv);
-			perror("./shell ");
-			exit(EXIT_SUCCESS);
+			perror("./shell");
+			exit(1);
 		}
+		else if (p == 0)
+			execmd(arg);
 		else
 			wait(&status);
 	}
