@@ -28,9 +28,9 @@ int main(int argc, char **argv)
 				break;
 		}
 		if (input[read - 1] == '\n')
-		{
 			input[read - 1] = '\0';
-		}
+		else
+			input[read] = '\0';
 		if (arg_count(input))
 		{
 			_print("./shell: No such file or directory\n");
