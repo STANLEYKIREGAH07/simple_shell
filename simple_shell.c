@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
 	char *input = NULL;
-	char *arg[MAX_ARGS];
+	/*char *arg[MAX_ARGS];*/
 	size_t input_s = 0;
 	ssize_t read;
 	pid_t p;
@@ -32,16 +32,16 @@ int main(int argc, char **argv)
 			input[read - 1] = '\0';
 		}
 
-		tokeninput(input, arg);
-		out(input);
+		/*tokeninput(input, arg);*/
+		/*out(input);*/
+		argv[0] = strtok(input, " ");
 		p = fork();
-		if (p == -1)
+		if (p <= 0)
 		{
-			perror("./shell");
+			execve(argv[0], argv, NULL);
+			perror("./shell ");
 			exit(1);
 		}
-		else if (p == 0)
-			execmd(arg);
 		else
 			wait(&status);
 	}
