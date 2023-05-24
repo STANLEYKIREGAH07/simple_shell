@@ -42,7 +42,7 @@ int main(int argc, char **argv)
 		{
 			execve(argv[0], argv, NULL);
 			perror("./shell ");
-			exit(1);
+			exit(EXIT_SUCCESS);
 		}
 		else
 			wait(&status);
