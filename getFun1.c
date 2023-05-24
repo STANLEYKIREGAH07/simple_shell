@@ -63,3 +63,30 @@ void out(char *input)
 		exit(0);
 	}
 }
+
+
+
+/**
+ * arg_count - Check the number of arguments entered.
+ * @input: Input string.
+ * Return: 1 if the number of arguments is greater than 1, otherwise 0.
+ **/
+int arg_count(char *input)
+{
+	int argCo;
+	char *arg;
+
+	argCo = 0;
+	arg = strtok(input, " ");
+
+	while (arg != NULL)
+	{
+		argCo++;
+		arg = strtok(NULL, " ");
+	}
+
+	if (argCo > 1)
+		return (1);
+	else
+		return (0);
+}

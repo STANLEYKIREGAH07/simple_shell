@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - reproduce the behavior of shell.
  * @argc: integer
@@ -9,13 +10,12 @@
 int main(int argc, char **argv)
 {
 	char *input = NULL;
-	/*char *arg[MAX_ARGS];*/
 	size_t input_s = 0;
 	ssize_t read;
 	pid_t p;
 	int status;
-	(void)argc;
 	(void)argv;
+	(void)argc;
 
 	while (1)
 	{
@@ -31,9 +31,11 @@ int main(int argc, char **argv)
 		{
 			input[read - 1] = '\0';
 		}
-
-		/*tokeninput(input, arg);*/
-		/*out(input);*/
+		if (arg_count(input))
+		{
+			_print("./shell: No such file or directory\n");
+			continue;
+		}
 		argv[0] = strtok(input, " ");
 		p = fork();
 		if (p <= 0)

@@ -19,5 +19,6 @@ void out(char *input);
 void execmd(char **arg);
 void tokeninput(char *input, char **arg);
 int _strlen(char *s);
+int arg_count(char *input);
 
 #endif
