@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 		p = fork();
 		if (p <= 0)
 		{
-			execve(argv[0], argv, NULL);
+			execvp(argv[0], argv);
 			perror("./shell ");
 			exit(EXIT_SUCCESS);
 		}

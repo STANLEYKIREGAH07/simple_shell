@@ -7,7 +7,6 @@
 void _prompt(void)
 {
 	write(1, "#cisfun$ ", 9);
-	fflush(stdout);
 }
 /**
  * tokeninput - check the input
