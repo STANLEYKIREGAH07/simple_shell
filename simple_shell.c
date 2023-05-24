@@ -28,12 +28,10 @@ int main(int argc, char **argv)
 			if (feof(stdin))
 				break;
 		}
-		 if (input[read - 1] == '\n')
-        {
-            input[read - 1] = '\0';
-        }
-
-		
+		if (input[read - 1] == '\n')
+		{
+			input[read - 1] = '\0';
+		}
 		tokeninput(input, arg);
 		out(input);
 		argv[0] = strtok(input, " ");
