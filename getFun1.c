@@ -43,7 +43,7 @@ void execmd(char **arg)
 
 	errormes = "./shell: No such file or directory\n";
 
-	if (execvp(arg[0], arg) == -1)
+	if (execve(arg[0], arg, NULL) == -1)
 	{
 		write(2, errormes, strlen(errormes));
 		_exit(1);
@@ -89,3 +89,10 @@ int arg_count(char *input)
 	else
 		return (0);
 }
+
+/**
+ * getline - 
+ * 
+ * Return:
+*/
+
