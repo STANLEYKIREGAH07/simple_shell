@@ -89,10 +89,3 @@ int arg_count(char *input)
 	else
 		return (0);
 }
-
-/**
- * getline - 
- * 
- * Return:
-*/
-
