@@ -43,10 +43,12 @@ int built_in(char **token, list_t *env, int num, char **command)
 	int i = 0;
 	(void) num;
 	(void) command;
-	if (_strcmp(token[0], "exit") == 0)
-	{
-		i = __exit(token, env, num, command);
-	}
+	/**
+	*if (_strcmp(token[0], "exit") == 0)
+	*{
+	*	i = _e_xit(token, env, num, command);
+	*}
+	**/
 	if (_strcmp(token[0], "env") == 0)
 	{
 		_env(token, env);
@@ -56,14 +58,14 @@ int built_in(char **token, list_t *env, int num, char **command)
 }
 
 /**
- * __exit - frees user input and then exits main program with a value
- * @str: user's command into shell (e.g. "exit 99")
+ * _e_xit - frees user input and then exits main program with a value
+ * @str: user's command into shell
  * @env: bring in environmental variable to free at error
  * @num: bring in nth user command line input to print in error message
  * @command: bring in command to free
  * Return: 0 if success 2 if fail
  */
-int __exit(char **str, list_t *env, int num, char **command)
+int _e_xit(char **str, list_t *env, int num, char **command)
 {
 	int e_value = 0;
 

@@ -31,7 +31,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 
 char *_which(char *str, list_t *env);
-int __exit(char **s, list_t *env, int num, char **command);
+int _e_xit(char **s, list_t *env, int num, char **command);
 int _execve(char *argv[], list_t *env, int num);
 void free_double_ptr(char **str);
 void free_link_list(list_t *list);
