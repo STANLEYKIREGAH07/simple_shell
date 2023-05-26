@@ -61,7 +61,7 @@ char *sear_p(info_t *info, char *pathstr, char *cmd)
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
+	if ((_strlen(cmd) > 2) && _verify(cmd, "./"))
 	{
 		if (is_it_cmd(info, cmd))
 			return (cmd);

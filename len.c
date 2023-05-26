@@ -23,8 +23,8 @@ int _strlen(char *s)
 
 /**
  * _strcmp -  function that compares two strings.
- * @s1: primera cadena.
- * @s2: segunda cadena.
+ * @s1: first string.
+ * @s2: second chain.
  * Return: 0.
  */
 
@@ -45,26 +45,24 @@ int _strcmp(char *s1, char *s2)
 
 
 /**
- * starts_with - checks if needle starts with haystack
- * @haystack: string to search
- * @needle: the substring to find
- *
- * Return: address of next char of haystack or NULL
+ * _verify -  verifies if haystack begins with needle.
+ * @a: string to examine.
+ * @b: the substring to locate.
+ * Return: pointer to the following character after haystack or NULL.
  */
-char *starts_with(const char *haystack, const char *needle)
+char *_verify(const char *a, const char *b)
 {
-	while (*needle)
-		if (*needle++ != *haystack++)
+	while (*b)
+		if (*b++ != *a++)
 			return (NULL);
-	return ((char *)haystack);
+	return ((char *)a);
 }
 
 /**
- * _strcat - function thar concatenantes two strings
- * @dest:string
- * @src:string
- *
- * Return: a pointer to the resulting string dest
+ * _strcat - a function that combines two strings.
+ * @dest: a string.
+ * @src: a string.
+ * Return: a pointer to the resulting string dest.
  **/
 
 char *_strcat(char *dest, char *src)
