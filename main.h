@@ -135,14 +135,12 @@ char **strtow(char *, char *);
 char **strtow1(char *, char);
 
 /* _reloc.c */
-char *_memset(char *, char, unsigned int);
+char *_mall(char *, char, unsigned int);
 void ffree(char **);
 void *_reloc(void *, unsigned int, unsigned int);
-
-
-/* atoi.c */
 int interactive(info_t *);
 int is_delim(char, char *);
+
 
 /* er.c */
 int _erratoi(char *);
