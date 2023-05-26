@@ -120,13 +120,13 @@ void exec_cmd(info_t *);
 int is_it_cmd(info_t *, char *);
 char *dup_char(char *, int, int);
 char *sear_p(info_t *, char *, char *);
-/**/
-/* toem_errors.c */
+
+/* prints.c */
 void print_str(char *);
 int print_char(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
-
+/**/
 /* toem_string.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
