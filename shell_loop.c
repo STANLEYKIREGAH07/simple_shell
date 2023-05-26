@@ -93,7 +93,7 @@ void see_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
+	path = sear_p(info, _getenv(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -102,7 +102,7 @@ void see_cmd(info_t *info)
 	else
 	{
 		if ((interactive(info) || _getenv(info, "PATH=")
-			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+			|| info->argv[0][0] == '/') && is_it_cmd(info, info->argv[0]))
 			exec_cmd(info);
 		else if (*(info->arg) != '\n')
 		{

@@ -110,22 +110,17 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-
 /* shell_loop.c */
 int main_sh(info_t *, char **);
 int find__cmd(info_t *);
 void see_cmd(info_t *);
 void exec_cmd(info_t *);
+
+/* exec_cmd.c */
+int is_it_cmd(info_t *, char *);
+char *dup_char(char *, int, int);
+char *sear_p(info_t *, char *, char *);
 /**/
-
-/* toem_parser.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
-
-/* loophsh.c */
-int loophsh(char **);
-
 /* toem_errors.c */
 void print_str(char *);
 int print_char(char);
