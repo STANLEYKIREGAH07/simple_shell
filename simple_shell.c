@@ -1,51 +1,50 @@
 #include "main.h"
 
 /**
- * main - reproduce the behavior of shell.
- * @argc: integer
- * @argv: double pointer
- * Return: output of sh
- **/
-
-int main(int argc, char **argv)
+ * shell - UNIX command line interpreter.
+ * @en: variables envirement.
+ * Return: 0 in success
+ */
+int shell(char **en)
 {
-	char *input = NULL;
-	char *arg[MAX_ARGS];
-	size_t input_s = 0;
-	ssize_t read;
-	pid_t p;
-	int status;
-	(void)argv;
-	(void)argc;
+	list_t *env;
+	size_t i, n;
+	int input_line_nbr, exit_stat;
+	char *cmd, *cmd_nbr, **token;
 
+	input_line_nbr = 0;
+	exit_stat = input_line_nbr;
+
+	env = env_linked_list(en);
 	while (1)
 	{
-		_prompt();
-		read = getline(&input, &input_s, stdin);
+		input_line_nbr++;
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
 
-		if (read == -1)
+		cmd = NULL;
+		i = 0;
+		i = get_line(&cmd);
+		C_d(i, cmd, env);
+		cmd_nbr = cmd;
+		cmd = ign_space(cmd);
+		n = 0;
+		while (cmd[n] != '\n')
+			n++;
+		cmd[n] = '\0';
+		if (cmd[0] == '\0')
 		{
-			if (feof(stdin))
-				break;
+			free(cmd_nbr);
+			continue;
 		}
-		if (input[read - 1] == '\n')
-		{
-			input[read - 1] = '\0';
-		}
-		tokeninput(input, arg);
-		out(input);
-		argv[0] = strtok(input, " ");
-		p = fork();
-		if (p == -1)
-		{
-			perror("./shell");
-			exit(1);
-		}
-		else if (p == 0)
-			execmd(arg);
-		else
-			wait(&status);
+		token = NULL;
+		token = _str_tok(cmd, " ");
+		if (cmd_nbr != NULL)
+			free(cmd_nbr);
+		exit_stat = built_in(token, env, input_line_nbr, NULL);
+		if (exit_stat)
+			continue;
+		exit_stat = _execve(token, env, input_line_nbr);
 	}
-	free(input);
-	return (0);
+	return (exit_stat);
 }
