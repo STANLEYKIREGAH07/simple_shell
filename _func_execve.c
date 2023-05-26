@@ -21,8 +21,6 @@ int _execve(char **s, list_t *env, int num)
 		t = 1;
 	}
 
-	else
-		holder = _which(s[0], env);
 
 	if (access(holder, X_OK) != 0)
 	{
