@@ -173,10 +173,8 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
-/* toem_builtin.c */
+/* func.c */
 int _e_exit(info_t *);
-
-
 
 /*toem_getline.c */
 ssize_t get_input(info_t *);
@@ -199,13 +197,6 @@ int populate_env_list(info_t *);
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
-
-/* toem_history.c */
-char *get_history_file(info_t *info);
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
-int renumber_history(info_t *info);
 
 /* toem_lists.c */
 list_t *add_node(list_t **, const char *, int);
