@@ -26,3 +26,20 @@ int _e_exit(info_t *info)
 	info->err_num = -1;
 	return (-2);
 }
+
+
+/**
+ * free_s - free memory associated with a pointer
+ * @ptr: free pointer.
+ * Return: free return 1 else 0.
+ */
+int free_s(void **ptr)
+{
+	if (ptr && *ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+		return (1);
+	}
+	return (0);
+}

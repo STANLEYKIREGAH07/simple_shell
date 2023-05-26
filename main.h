@@ -111,11 +111,12 @@ typedef struct builtin
 } builtin_table;
 
 
-/* toem_shloop.c */
-int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+/* shell_loop.c */
+int main_sh(info_t *, char **);
+int find__cmd(info_t *);
+void see_cmd(info_t *);
+void exec_cmd(info_t *);
+/**/
 
 /* toem_parser.c */
 int is_cmd(info_t *, char *);
@@ -158,7 +159,7 @@ void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
 /* toem_memory.c */
-int bfree(void **);
+int free_s(void **);
 
 /* toem_atoi.c */
 int interactive(info_t *);
