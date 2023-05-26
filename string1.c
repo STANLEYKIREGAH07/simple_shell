@@ -1,49 +1,58 @@
 #include "main.h"
 
 /**
- * _strcpy - copies a string
- * @dest: the destination
- * @src: the source
- *
- * Return: pointer to destination
+ * _strcpy - copies the string pointed to by src into dest
+ * @dest: destination
+ * @src: source
+ * Return: char with copy of string
  */
+
 char *_strcpy(char *dest, char *src)
 {
-	int i = 0;
-
+	int i;
+	
 	if (dest == src || src == 0)
 		return (dest);
-	while (src[i])
+	for (i = 0; *(src + i) != '\0'; i++)
 	{
-		dest[i] = src[i];
-		i++;
+		dest[i] = *(src + i);
 	}
-	dest[i] = 0;
+	dest[i] = '\0';
+
 	return (dest);
 }
 
 /**
- * _strdup - duplicates a string
- * @str: the string to duplicate
- *
- * Return: pointer to the duplicated string
- */
-char *_strdup(const char *str)
+ *_strdup - function that returns a pointer to a
+ *newly allocated space in memory, which contains a copy
+ *of the string given as a parameter.
+ *@str: string
+ *Return: pinter of an array of character
+ **/
+
+char *_strdup(char *str)
 {
-	int length = 0;
-	char *ret;
+	char *strn;
+	unsigned int i;
+	int x;
 
 	if (str == NULL)
 		return (NULL);
-	while (*str++)
-		length++;
-	ret = malloc(sizeof(char) * (length + 1));
-	if (!ret)
+
+	for (x = 0; str[x] != '\0'; x++)
+		;
+	strn = (char *)malloc(x + 1 * sizeof(char));
+	if (strn != NULL)
+	{
+		for (i = 0; str[i] != '\0'; i++)
+			strn[i] = str[i];
+	}
+	else
 		return (NULL);
-	for (length++; length--;)
-		ret[length] = *--str;
-	return (ret);
+	strn[i] = '\0';
+	return (strn);
 }
+
 
 /**
  *_puts - prints an input string
