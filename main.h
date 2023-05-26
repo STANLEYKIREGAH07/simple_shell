@@ -126,8 +126,8 @@ char *find_path(info_t *, char *, char *);
 int loophsh(char **);
 
 /* toem_errors.c */
-void _eputs(char *);
-int _eputchar(char);
+void print_str(char *);
+int print_char(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
