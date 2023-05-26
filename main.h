@@ -46,20 +46,20 @@ typedef struct liststr
  *@argc: the count of arguments.
  *@argv: an array of strings derived from arg.
  *@path:  a string representing the current command's path.
- *@line_count: the count of errors
- *@err_num: the error code for exit()s
- *@linecount_flag: if on count this line of input
- *@fname: the program filename
- *@env: linked list local copy of environ
- *@environ: custom modified copy of environ from LL env
- *@history: the history node
- *@alias: the alias node
- *@env_changed: on if environ was changed
- *@status: the return status of the last exec'd command
- *@cmd_buf: address of pointer to cmd_buf, on if chaining
- *@cmd_buf_type: CMD_type ||, &&, ;
- *@readfd: the fd from which to read line input
- *@histcount: the history line number count
+ *@line_count: the count of errors.
+ *@err_num: the exit() error code.
+ *@linecount_flag: if enabled, count this input line.
+ *@fname: the filename of the program.
+ *@env: local copy of the environ linked list.
+ *@environ: modified copy of environ from the LL env.
+ *@history: the node representing the command history.
+ *@alias: the node representing the command alias.
+ *@env_changed: on if environ has been modified.
+ *@status: the return status of the last executed command.
+ *@cmd_buf: address of pointer to cmd_buf, on if chaining.
+ *@cmd_buf_type: CMD_type indicating ||, &&, or ;
+ *@readfd: the file descriptor used for reading line input
+ *@histcount: the count of history line numbers
  */
 typedef struct passinfo
 {
@@ -77,9 +77,8 @@ typedef struct passinfo
 	char **environ;
 	int env_changed;
 	int status;
-
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	char **cmd_buf;
+	int cmd_buf_type;
 	int readfd;
 	int histcount;
 } info_t;
@@ -98,6 +97,8 @@ typedef struct builtin
 	char *type;
 	int (*func)(info_t *);
 } builtin_table;
+
+/*each file and the function in it*/
 
 /* shell_loop.c */
 int main_sh(info_t *, char **);
