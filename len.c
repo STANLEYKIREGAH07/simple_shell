@@ -60,20 +60,28 @@ char *starts_with(const char *haystack, const char *needle)
 }
 
 /**
- * _strcat - concatenates two strings
- * @dest: the destination buffer
- * @src: the source buffer
+ * _strcat - function thar concatenantes two strings
+ * @dest:string
+ * @src:string
  *
- * Return: pointer to destination buffer
- */
+ * Return: a pointer to the resulting string dest
+ **/
+
 char *_strcat(char *dest, char *src)
 {
-	char *ret = dest;
+	int i, j;
 
-	while (*dest)
-		dest++;
-	while (*src)
-		*dest++ = *src++;
-	*dest = *src;
-	return (ret);
+	i = 0;
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+	j = 0;
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		j++;
+		i++;
+	}
+	return (dest);
 }

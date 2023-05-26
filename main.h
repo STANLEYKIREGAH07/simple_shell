@@ -126,8 +126,8 @@ void print_str(char *);
 int print_char(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
-/**/
-/* toem_string.c */
+
+/* len.c */
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
