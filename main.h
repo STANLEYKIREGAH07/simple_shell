@@ -175,12 +175,8 @@ void remove_comments(char *);
 
 /* toem_builtin.c */
 int _e_exit(info_t *);
-int _mycd(info_t *);
 
 
-/* toem_builtin1.c */
-int _myhistory(info_t *);
-int _myalias(info_t *);
 
 /*toem_getline.c */
 ssize_t get_input(info_t *);
