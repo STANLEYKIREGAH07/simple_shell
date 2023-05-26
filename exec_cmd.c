@@ -1,17 +1,18 @@
 #include "main.h"
 
 /**
- * is_it_cmd - determines if a file is an executable command
- * @info: the info struct
- * @path: path to the file
- *
- * Return: 1 if true, 0 otherwise
+ * is_it_cmd - identifies whether a file functions as an executable directive.
+ * @info: the data structure.
+ * @path: file's location.
+ * Return: 1 when accurate, 0 in any other case.
  */
+
 int is_it_cmd(info_t *info, char *path)
 {
 	struct stat st;
 
 	(void)info;
+
 	if (!path || stat(path, &st))
 		return (0);
 
@@ -23,37 +24,40 @@ int is_it_cmd(info_t *info, char *path)
 }
 
 /**
- * dup_char - duplicates characters
- * @pathstr: the PATH string
- * @start: starting index
- * @stop: stopping index
- *
- * Return: pointer to new buffer
+ * dup_char - repeated characters.
+ * @pathstr: the string representing the PATH.
+ * @start: index where it starts.
+ * @stop: index where it ends-
+ * Return: reference to fresh memory allocation.
  */
 char *dup_char(char *pathstr, int start, int stop)
 {
-	static char buf[1024];
-	int i = 0, k = 0;
+	static char a[1024];
+	int i, k;
+
+	i = 0;
 
 	for (k = 0, i = start; i < stop; i++)
 		if (pathstr[i] != ':')
-			buf[k++] = pathstr[i];
-	buf[k] = 0;
-	return (buf);
+			a[k++] = pathstr[i];
+	a[k] = 0;
+	return (a);
 }
 
 /**
- * sear_p - finds this cmd in the PATH string
- * @info: the info struct
- * @pathstr: the PATH string
- * @cmd: the cmd to find
- *
- * Return: full path of cmd if found or NULL
+ * sear_p - locates this command within the PATH string.
+ * @info: the information structure.
+ * @pathstr: the string that represents the PATH.
+ * @cmd: the command to locate.
+ * Return: complete path of the command if found or NULL.
  */
 char *sear_p(info_t *info, char *pathstr, char *cmd)
 {
-	int i = 0, curr_pos = 0;
+	int i, c_position;
 	char *path;
+
+	i = 0;
+	c_position = 0;
 
 	if (!pathstr)
 		return (NULL);
@@ -66,7 +70,7 @@ char *sear_p(info_t *info, char *pathstr, char *cmd)
 	{
 		if (!pathstr[i] || pathstr[i] == ':')
 		{
-			path = dup_char(pathstr, curr_pos, i);
+			path = dup_char(pathstr, c_position, i);
 			if (!*path)
 				_strcat(path, cmd);
 			else
@@ -78,7 +82,7 @@ char *sear_p(info_t *info, char *pathstr, char *cmd)
 				return (path);
 			if (!pathstr[i])
 				break;
-			curr_pos = i;
+			c_position = i;
 		}
 		i++;
 	}

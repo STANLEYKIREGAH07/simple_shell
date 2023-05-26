@@ -10,20 +10,20 @@
 
 int main_sh(info_t *info, char **av)
 {
-	ssize_t r;
+	ssize_t i;
 	int builtin_ret;
 
-	r = 0;
+	i = 0;
 	builtin_ret = 0;
 
-	while (r != -1 && builtin_ret != -2)
+	while (i != -1 && builtin_ret != -2)
 	{
-		clear_info(info);
+		_clear(info);
 		if (interactive(info))
 			_puts("#cisfun$ ");
 		print_char(BUF_FLUSH);
-		r = get_input(info);
-		if (r != -1)
+		i = get_input(info);
+		if (i != -1)
 		{
 			set_info(info, av);
 			builtin_ret = find__cmd(info);
@@ -47,12 +47,13 @@ int main_sh(info_t *info, char **av)
 }
 
 /**
- * find__cmd - find commands
- * @info: the parameter & return info struct
- * Return: -1 if builtin not found,
- *			0 if builtin executed successfully,
- *			1 if builtin found but not successful,
- *			-2 if builtin signals exit()
+ * find__cmd - search command.
+ * @info: the information structure containing,
+ * the parameter and return details.
+ * Return: -1 in case the built-in command is not located,
+ * 0 upon successful execution of the built-in command,
+ * 1 if the built-in command is found but not successful,
+ * -2 if the built-in command signals an exit().
  */
 int find__cmd(info_t *info)
 {
@@ -76,9 +77,9 @@ int find__cmd(info_t *info)
 }
 
 /**
- * see_cmd - search command
- * @info: the parameter & return info struct
- * Return: void
+ * see_cmd - search command.
+ * @info: the input and output data structure.
+ * Return: void.
  */
 void see_cmd(info_t *info)
 {
@@ -117,23 +118,22 @@ void see_cmd(info_t *info)
 }
 
 /**
- * exec_cmd - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
- *
- * Return: void
+ * exec_cmd - Spawns a new execution thread to execute the given command.
+ * @info: the input and output data structure.
+ * Return: void.
  */
+
 void exec_cmd(info_t *info)
 {
-	pid_t child_pid;
+	pid_t p;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	p = fork();
+	if (p == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
-	if (child_pid == 0)
+	if (p == 0)
 	{
 		if (execve(info->path, info->argv, get_env(info)) == -1)
 		{
@@ -142,7 +142,6 @@ void exec_cmd(info_t *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{

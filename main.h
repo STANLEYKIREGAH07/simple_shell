@@ -114,8 +114,8 @@ char *sear_p(info_t *, char *, char *);
 /* prints.c */
 void print_str(char *);
 int print_char(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+int _put(char c, int b);
+int _putsfd(char *str, int b);
 
 /* len.c */
 int _strlen(char *);
@@ -168,7 +168,7 @@ int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
 
 /* get_i.c */
-void clear_info(info_t *);
+void _clear(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
