@@ -23,36 +23,27 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- *_strdup - function that returns a pointer to a
- *newly allocated space in memory, which contains a copy
- *of the string given as a parameter.
- *@str: string
- *Return: pinter of an array of character
- **/
-
-char *_strdup(char *str)
+ * _strdup - duplicates a string
+ * @str: the string to duplicate
+ *
+ * Return: pointer to the duplicated string
+ */
+char *_strdup(const char *str)
 {
-	char *strn;
-	unsigned int i;
-	int x;
+	int length = 0;
+	char *ret;
 
 	if (str == NULL)
 		return (NULL);
-
-	for (x = 0; str[x] != '\0'; x++)
-		;
-	strn = (char *)malloc(x + 1 * sizeof(char));
-	if (strn != NULL)
-	{
-		for (i = 0; str[i] != '\0'; i++)
-			strn[i] = str[i];
-	}
-	else
+	while (*str++)
+		length++;
+	ret = malloc(sizeof(char) * (length + 1));
+	if (!ret)
 		return (NULL);
-	strn[i] = '\0';
-	return (strn);
+	for (length++; length--;)
+		ret[length] = *--str;
+	return (ret);
 }
-
 
 /**
  *_puts - prints an input string
