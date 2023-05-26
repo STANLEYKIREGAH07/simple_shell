@@ -121,7 +121,7 @@ int _strcmp(char *, char *);
 char *_verify(const char *, const char *);
 char *_strcat(char *, char *);
 
-/* len_v1.c */
+/* len_1.c */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
@@ -130,11 +130,11 @@ int _putchar(char);
 /* exits.c */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+char *_loc(char *, char);
 
 /* token.c */
 char **strtow(char *, char *);
-char **strtow2(char *, char);
+char **strtow1(char *, char);
 
 /* _reloc.c */
 char *_memset(char *, char, unsigned int);
