@@ -106,7 +106,7 @@ int find__cmd(info_t *);
 void see_cmd(info_t *);
 void exec_cmd(info_t *);
 
-/* exec_cmd.c */
+/* ex_cmd.c */
 int is_it_cmd(info_t *, char *);
 char *dup_char(char *, int, int);
 char *sear_p(info_t *, char *, char *);
