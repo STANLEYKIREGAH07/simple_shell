@@ -55,6 +55,7 @@ typedef struct liststr
  *@env_changed: on if environ has been modified.
  *@status: the return status of the last executed command.
  *@cmd_buf:  address of pointer to cmd_buf, on if chaining.
+ *@cmd_buf_type: CMD_type indicating ||, &&, or ;
  *@readfd: the file descriptor used for reading line input
  */
 typedef struct passinfo
@@ -73,6 +74,7 @@ typedef struct passinfo
 	int status;
 
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 } info_t;
 
