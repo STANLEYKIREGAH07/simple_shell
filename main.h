@@ -59,14 +59,13 @@ typedef struct liststr
  *@cmd_buf: address of pointer to cmd_buf, on if chaining.
  *@cmd_buf_type: CMD_type indicating ||, &&, or ;
  *@readfd: the file descriptor used for reading line input
- *@histcount: the count of history line numbers
  */
 typedef struct passinfo
 {
 	char *arg;
 	char **argv;
-	char *path;
 	int argc;
+	char *path;
 	unsigned int line_count;
 	int err_num;
 	int linecount_flag;
@@ -80,12 +79,11 @@ typedef struct passinfo
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
-	int histcount;
 } info_t;
 
 #define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-	0, 0, 0}
+{NULL, NULL, 0, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0}
 
 /**
  *struct builtin - includes an integrated string and associated operation.
@@ -190,9 +188,7 @@ void free_list(list_t **);
 /* lists1.c */
 size_t list_len(const list_t *);
 char **list_to_strings(list_t *);
-
 list_t *node__verify(list_t *, char *, char);
-
 
 /* vars.c */
 int is_chain(info_t *, char *, size_t *);
