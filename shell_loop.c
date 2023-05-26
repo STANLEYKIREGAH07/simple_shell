@@ -2,21 +2,25 @@
 
 /**
  * main_sh - main shell loop
- * @info: the parameter & return info struct
- * @av: the argument vector from main()
- * Return: 0 on success, 1 on error, or error code
- */
+ * @info: the struct containing information about parameters,
+ * and return values.
+ * @av: the vector of arguments passed from the main() function
+ * Return: 0 indicating successful execution, 1 indicating an error.
+ **/
 
 int main_sh(info_t *info, char **av)
 {
-	ssize_t r = 0;
-	int builtin_ret = 0;
+	ssize_t r;
+	int builtin_ret;
+
+	r = 0;
+	builtin_ret = 0;
 
 	while (r != -1 && builtin_ret != -2)
 	{
 		clear_info(info);
 		if (interactive(info))
-			_puts("$ ");
+			_puts("#cisfun$ ");
 		print_char(BUF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
