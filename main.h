@@ -114,8 +114,6 @@ char *sear_p(info_t *, char *, char *);
 /* prints.c */
 void print_str(char *);
 int print_char(char);
-int _put(char c, int b);
-int _putsfd(char *str, int b);
 
 /* len.c */
 int _strlen(char *);
