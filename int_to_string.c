@@ -1,5 +1,22 @@
-#include "main.h"
+#include "shell.h"
 
+/**
+ * numlen - counts number of 0s in a tens power number
+ * @n: number
+ * Return: returns count of digits
+ */
+int numlen(int n)
+{
+	int count = 0;
+	int num = n;
+
+	while (num > 9 || num < -9)
+	{
+		num /= 10;
+		count++;
+	}
+	return (count);
+}
 /**
  * int_to_string - turns an int into a string
  * @number: int
@@ -16,7 +33,7 @@ char *int_to_string(int number)
 
 	if (number < 0)
 		t = 1;
-	res = malloc(sizeof(char) * (numLength(digits) + 2 + t));
+	res = malloc(sizeof(char) * (numlen(digits) + 2 + t));
 	if (res == NULL)
 		return (NULL);
 	if (number < 0)

@@ -1,43 +1,44 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * _realloc - Reserve memory and initialize all values to zero.
- * @ptr: Utilize a memory pointer referencing the previously allocated space.
- * @old_size: The size that was allocated earlier.
- * @new_size: Allocate memory for a new size.
- * Return: Utilize a pointer to access reallocated memory.
+ * _realloc - allocate memory and set all values to 0
+ * @ptr: pointer to the memory previously allocated (malloc(old_size))
+ * @old_size: size previously allocated
+ * @new_size: new size to reallocate
+ * Return: pointer to reallocated memory
  */
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int k;
-	void *j;
+	void *p;
+	unsigned int i;
 
-	if (new_size == 0 && ptr != NULL)
+	if (new_size == 0 && ptr != NULL) /* free memory if reallocate 0 */
 	{
 		free(ptr);
 		return (NULL);
 	}
 
-	if (new_size == old_size)
+	if (new_size == old_size) /* return ptr if reallocating same old size */
 		return (ptr);
 
-	if (ptr == NULL)
+	if (ptr == NULL) /* malloc new size if ptr is originally null */
 	{
-		j = malloc(new_size);
-		if (j == NULL)
+		p = malloc(new_size);
+		if (p == NULL)
 			return (NULL);
 		else
-			return (j);
+			return (p);
 	}
 
-	j = malloc(new_size);
-	if (j == NULL)
+	p = malloc(new_size); /* malloc and check error */
+	if (p == NULL)
 		return (NULL);
 
-	for (k = 0; k < old_size && k < new_size; k++)
-		*((char *)j + k) = *((char *)ptr + k);
-	free(ptr);
+	/* fill up values up till minimum of old or new size */
+	for (i = 0; i < old_size && i < new_size; i++)
+		*((char *)p + i) = *((char *)ptr + i);
+	free(ptr); /* free old ptr */
 
-	return (j);
+	return (p);
 }

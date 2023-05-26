@@ -1,19 +1,18 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * main - creates a simple shell.
- * @argc: count arguments parameter.
- * @argv: an array of a command listed.
- * @env: variables envirement.
- * Return: 0 in success.
+ * main - creates a simple shell
+ * @ac: argument count
+ * @av: argument vectors
+ * @env: environmental variables
+ * Return: 0 on success
  */
-
-int main(int argc, char **argv, char **env)
+int main(int ac, char **av, char **env)
 {
-	(void)argv;
-	(void)argc;
+	(void)ac;
+	(void)av;
 
-	shell(env);
+	prompt(env);
 
 	return (0);
 }

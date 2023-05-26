@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * env_linked_list - creates a linked list from environmental variables
@@ -13,7 +13,7 @@ list_t *env_linked_list(char **env)
 	head = NULL;
 	while (env[i] != NULL)
 	{
-		add_n_end(&head, env[i]);
+		add_end_node(&head, env[i]);
 		i++;
 	}
 	return (head);
@@ -28,6 +28,6 @@ list_t *env_linked_list(char **env)
 int _env(char **str, list_t *env)
 {
 	free_double_ptr(str); /* frees user input */
-	p_l(env); /* prints env */
+	print_list(env); /* prints env */
 	return (0);
 }

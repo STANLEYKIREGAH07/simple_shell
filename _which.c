@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * _which - fleshes out command by appending it to a matching PATH directory
@@ -12,8 +12,8 @@ char *_which(char *str, list_t *env)
 	int i = 0;
 
 	/* get and tokenize PATH directories, then free original string */
-	pth = _access_env("PATH", env);
-	toks = _str_c_tok(pth, ":");
+	pth = get_env("PATH", env);
+	toks = c_str_tok(pth, ":");
 	free(pth);
 
 	/* append "/cmd" to each token to see it's legit */

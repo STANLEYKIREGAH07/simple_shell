@@ -1,15 +1,36 @@
-#include "main.h"
+#include "shell.h"
+
+/**
+ * c_t_size - returns number of delim
+ * @str: user's command typed into shell
+ * @delm: delimeter (e.g. " ");
+ * Return: number of tokens
+ */
+int c_t_size(char *str, char delm)
+{
+	int i = 0, num_delm = 0;
+
+	while (str[i] != '\0')
+	{
+		if (str[i] == delm)
+		{
+			num_delm++;
+		}
+		i++;
+	}
+	return (num_delm);
+}
 
 
 /**
- * _str_c_tok - tokenizes a string even the continuous delim with empty string
+ * c_str_tok - tokenizes a string even the continuous delim with empty string
  * (e.g. path --> ":/bin::/bin/usr" )
  * @str: user's command typed into shell
  * @delm: delimeter (e.g. " ");
  * Return: an array of tokens (e.g. {"\0", "/bin", "\0", "/bin/usr"}
  * (purpose is to have which command look through current directory if ":")
  */
-char **_str_c_tok(char *str, char *delm)
+char **c_str_tok(char *str, char *delm)
 {
 	int buffsize = 0, p = 0, si = 0, i = 0, len = 0, se = 0;
 	char **toks = NULL, d_ch;
