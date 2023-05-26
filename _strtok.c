@@ -16,7 +16,9 @@ char **_str_tok(char *str, char *d)
 
 	d_ch = d[0];
 	toks = malloc(sizeof(char *) * (b_size + 2));
-	str = ignore_delm(str, d_ch);
+	/**
+	*str = ignore_delm(str, d_ch);
+	**/
 	b_size = t_size(str, d_ch);
 
 	if (toks == NULL)
