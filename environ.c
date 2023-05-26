@@ -48,7 +48,7 @@ int _mysetenv(info_t *info)
 		print_str("Incorrect number of arguements\n");
 		return (1);
 	}
-	if (_setenv(info, info->argv[1], info->argv[2]))
+	if (set_env(info, info->argv[1], info->argv[2]))
 		return (0);
 	return (1);
 }

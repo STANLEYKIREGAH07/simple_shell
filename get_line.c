@@ -32,7 +32,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 				r--;
 			}
 			info->linecount_flag = 1;
-			remove_comments(*buf);
+			rm_c(*buf);
 			/* if (_strchr(*buf, ';')) is this a command chain? */
 			{
 				*len = r;
@@ -89,26 +89,6 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * read_buf - reads a buffer
- * @info: parameter struct
- * @buf: buffer
- * @i: size
- *
- * Return: r
- */
-ssize_t read_buf(info_t *info, char *buf, size_t *i)
-{
-	ssize_t r = 0;
-
-	if (*i)
-		return (0);
-	r = read(info->readfd, buf, READ_BUF_SIZE);
-	if (r >= 0)
-		*i = r;
-	return (r);
-}
-
-/**
  * _getline - gets the next line of input from STDIN
  * @info: parameter struct
  * @ptr: address of pointer to buffer, preallocated or NULL
@@ -136,7 +116,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 
 	c = _strchr(buf + i, '\n');
 	k = c ? 1 + (unsigned int)(c - buf) : len;
-	new_p = _realloc(p, s, s ? s + k : k + 1);
+	new_p = _reloc(p, s, s ? s + k : k + 1);
 	if (!new_p) /* MALLOC FAILURE! */
 		return (p ? free(p), -1 : -1);
 
@@ -158,7 +138,6 @@ int _getline(info_t *info, char **ptr, size_t *length)
 /**
  * sigintHandler - blocks ctrl-C
  * @sig_num: the signal number
- *
  * Return: void
  */
 void sigintHandler(__attribute__((unused))int sig_num)

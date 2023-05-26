@@ -107,7 +107,7 @@ void see_cmd(info_t *info)
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
-			print_error(info, "not found\n");
+			print_er(info, "not found\n");
 		}
 	}
 }
@@ -131,7 +131,7 @@ void exec_cmd(info_t *info)
 	}
 	if (child_pid == 0)
 	{
-		if (execve(info->path, info->argv, get_environ(info)) == -1)
+		if (execve(info->path, info->argv, get_env(info)) == -1)
 		{
 			free_info(info, 1);
 			if (errno == EACCES)
@@ -147,7 +147,7 @@ void exec_cmd(info_t *info)
 		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)
-				print_error(info, "Permission denied\n");
+				print_er(info, "Permission denied\n");
 		}
 	}
 }
