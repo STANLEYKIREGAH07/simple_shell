@@ -68,10 +68,6 @@ void free_info(info_t *info, int all)
 			free(info->arg);
 		if (info->env)
 			_list_free(&(info->env));
-		if (info->history)
-			_list_free(&(info->history));
-		if (info->alias)
-			_list_free(&(info->alias));
 		ffree(info->environ);
 			info->environ = NULL;
 		free_s((void **)info->cmd_buf);
