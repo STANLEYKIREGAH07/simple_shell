@@ -8,11 +8,12 @@
  */
 int rm__env(info_t *info, char *var)
 {
-	list_t *node = info->env;
+	list_t *node;
 	size_t i;
 	char *p;
 
 	i = 0;
+	node = info->env;
 
 	if (!node || !var)
 		return (0);
