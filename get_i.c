@@ -10,7 +10,9 @@
  */
 void set_info(info_t *info, char **av)
 {
-	int i = 0;
+	int i;
+
+	i = 0;
 
 	info->fname = av[0];
 	if (info->arg)
