@@ -54,7 +54,7 @@ char *dup_char(char *pathstr, int start, int stop)
 char *sear_p(info_t *info, char *pathstr, char *cmd)
 {
 	int i, c_position;
-	char *path;
+	char *a;
 
 	i = 0;
 	c_position = 0;
@@ -70,16 +70,16 @@ char *sear_p(info_t *info, char *pathstr, char *cmd)
 	{
 		if (!pathstr[i] || pathstr[i] == ':')
 		{
-			path = dup_char(pathstr, c_position, i);
-			if (!*path)
-				_strcat(path, cmd);
+			a = dup_char(pathstr, c_position, i);
+			if (!*a)
+				_strcat(a, cmd);
 			else
 			{
-				_strcat(path, "/");
-				_strcat(path, cmd);
+				_strcat(a, "/");
+				_strcat(a, cmd);
 			}
-			if (is_it_cmd(info, path))
-				return (path);
+			if (is_it_cmd(info, a))
+				return (a);
 			if (!pathstr[i])
 				break;
 			c_position = i;
@@ -87,4 +87,45 @@ char *sear_p(info_t *info, char *pathstr, char *cmd)
 		i++;
 	}
 	return (NULL);
+}
+
+
+/**
+ *print_str - print string.
+ * @str: string.
+ * Return: void.
+ */
+
+void print_str(char *str)
+{
+	int i = 0;
+
+	if (!str)
+		return;
+	while (str[i] != '\0')
+	{
+		print_char(str[i]);
+		i++;
+	}
+}
+
+/**
+ * print_char - print character.
+ * @c: character.
+ * Return: 1 if success and -1 in error.
+ */
+
+int print_char(char c)
+{
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
+
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	{
+		write(2, buf, i);
+		i = 0;
+	}
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
+	return (1);
 }

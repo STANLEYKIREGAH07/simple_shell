@@ -108,8 +108,6 @@ void exec_cmd(info_t *);
 int is_it_cmd(info_t *, char *);
 char *dup_char(char *, int, int);
 char *sear_p(info_t *, char *, char *);
-
-/* prints.c */
 void print_str(char *);
 int print_char(char);
 
@@ -129,8 +127,6 @@ int _putchar(char);
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_loc(char *, char);
-
-/* token.c */
 char **strtow(char *, char *);
 char **strtow1(char *, char);
 
@@ -168,7 +164,7 @@ void free_info(info_t *, int);
 char *_getenv(info_t *, const char *);
 int _myenv(info_t *);
 int _mysetenv(info_t *);
-int _myunsetenv(info_t *);
+int _rm_env(info_t *);
 int populate_env_list(info_t *);
 
 /* get_env.c */

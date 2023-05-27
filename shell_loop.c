@@ -62,7 +62,7 @@ int find__cmd(info_t *info)
 		{"exit", _e_exit},
 		{"env", _myenv},
 		{"setenv", _mysetenv},
-		{"unsetenv", _myunsetenv},
+		{"unsetenv", _rm_env},
 		{NULL, NULL}
 	};
 

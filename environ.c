@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * _myenv - prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * _myenv - displays the current environment.
+ * @info: Structure holding possible parameters. Employed to uphold.
+ * Return: 0
  */
 int _myenv(info_t *info)
 {
@@ -13,33 +12,32 @@ int _myenv(info_t *info)
 }
 
 /**
- * _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
- *
- * Return: the value
+ * _getenv - retrieves the value of an environment variable.
+ * @info: Structure containing possible arguments, utilized for maintenance.
+ * @name: name of the environment variable.
+ * Return: the retrieved value.
  */
 char *_getenv(info_t *info, const char *name)
 {
-	list_t *node = info->env;
-	char *p;
+	list_t *node;
+	char *a;
+
+	node = info->env;
 
 	while (node)
 	{
-		p = _verify(node->str, name);
-		if (p && *p)
-			return (p);
+		a = _verify(node->str, name);
+		if (a && *a)
+			return (a);
 		node = node->next;
 	}
 	return (NULL);
 }
 
 /**
- * _mysetenv - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * _mysetenv -  Create a fresh environment variable or update an existing one.
+ * @info: Data structure containing possible arguments. Utilized to preserve.
+ *  Return: 0.
  */
 int _mysetenv(info_t *info)
 {
@@ -54,12 +52,11 @@ int _mysetenv(info_t *info)
 }
 
 /**
- * _myunsetenv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0
+ * _rm_env - Delete an environment variable.
+ * @info: Data structure holding possible arguments. Utilized for.
+ *  Return: 0.
  */
-int _myunsetenv(info_t *info)
+int _rm_env(info_t *info)
 {
 	int i;
 
@@ -75,15 +72,16 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * populate_env_list - populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * populate_env_list -  fills env linked list
+ * @info: Structure containing possible parameters. Used to preserve.
+ * Return: 0
  */
 int populate_env_list(info_t *info)
 {
-	list_t *node = NULL;
+	list_t *node;
 	size_t i;
+
+	node = NULL;
 
 	for (i = 0; environ[i]; i++)
 		add_node_end(&node, environ[i], 0);
