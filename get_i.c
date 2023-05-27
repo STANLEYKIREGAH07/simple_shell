@@ -1,21 +1,12 @@
 #include "main.h"
 
-/**
- * _clear - initializes info_t struct
- * @info: struct address
- */
-void _clear(info_t *info)
-{
-	info->arg = NULL;
-	info->argv = NULL;
-	info->path = NULL;
-	info->argc = 0;
-}
+
 
 /**
  * set_info - initializes info_t struct
  * @info: struct address
  * @av: argument vector
+ * Return: void.
  */
 void set_info(info_t *info, char **av)
 {
@@ -45,9 +36,24 @@ void set_info(info_t *info, char **av)
 }
 
 /**
+ * _clear - initializes info_t struct
+ * @info: struct address
+ * Return: void.
+ */
+
+void _clear(info_t *info)
+{
+	info->arg = NULL;
+	info->argv = NULL;
+	info->path = NULL;
+	info->argc = 0;
+}
+
+/**
  * free_info - frees info_t struct fields
  * @info: struct address
  * @all: true if freeing all fields
+ * Return: void.
  */
 void free_info(info_t *info, int all)
 {

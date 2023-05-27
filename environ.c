@@ -66,7 +66,7 @@ int _rm_env(info_t *info)
 		return (1);
 	}
 	for (i = 1; i <= info->argc; i++)
-		_unsetenv(info, info->argv[i]);
+		rm__env(info, info->argv[i]);
 
 	return (0);
 }

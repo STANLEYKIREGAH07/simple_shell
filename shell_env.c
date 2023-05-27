@@ -169,7 +169,7 @@ void exec_cmd(info_t *info)
 	}
 	if (p == 0)
 	{
-		if (execve(info->path, info->argv, get_env(info)) == -1)
+		if (execve(info->path, info->argv, _env(info)) == -1)
 		{
 			free_info(info, 1);
 			if (errno == EACCES)

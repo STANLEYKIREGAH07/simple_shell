@@ -116,9 +116,9 @@ void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
 
-/* get_env.c */
-char **get_env(info_t *);
-int _unsetenv(info_t *, char *);
+/* _env.c */
+char **_env(info_t *);
+int rm__env(info_t *, char *);
 int set_env(info_t *, char *, char *);
 
 /* list.c */
