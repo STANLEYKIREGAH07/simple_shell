@@ -98,11 +98,67 @@ typedef struct builtin
 
 /*each file and the function in it*/
 
+/* func.c */
+int _e_exit(info_t *);
+int free_s(void **);
+ssize_t read_buf(info_t *info, char *buf, size_t *i);
+void _puts(char *);
+int _putchar(char);
+
+/* get_line.c */
+ssize_t get_input(info_t *);
+int _getline(info_t *, char **, size_t *);
+void sigintHandler(int);
+
+/* get_i.c */
+void _clear(info_t *);
+void set_info(info_t *, char **);
+void free_info(info_t *, int);
+
+
+/* get_env.c */
+char **get_env(info_t *);
+int _unsetenv(info_t *, char *);
+int set_env(info_t *, char *, char *);
+
+/* lists.c */
+list_t *add_node_end(list_t **, const char *, int);
+size_t print_list_str(const list_t *);
+int delete_node_at_index(list_t **, unsigned int);
+void free_list(list_t **);
+
+/* lists1.c */
+size_t list_len(const list_t *);
+char **list_to_strings(list_t *);
+list_t *node__verify(list_t *, char *, char);
+
 /* shell_loop.c */
 int main_sh(info_t *, char **);
 int find__cmd(info_t *);
 void see_cmd(info_t *);
 void exec_cmd(info_t *);
+char *_strdup(const char *);
+
+/* er.c */
+int _erratoi(char *);
+void print_er(info_t *, char *);
+int p_dec(int, int);
+char *conv_nbr(long int, int, int);
+void rm_c(char *);
+
+/* len.c */
+int _strlen(char *);
+int _strcmp(char *, char *);
+char *_verify(const char *, const char *);
+char *_strcat(char *, char *);
+char *_strcpy(char *, char *);
+
+/* vars.c */
+int is_chain(info_t *, char *, size_t *);
+void check_chain(info_t *, char *, size_t *, size_t, size_t);
+int replace_alias(info_t *);
+int replace_vars(info_t *);
+int replace_string(char **, char *);
 
 /* ex_cmd.c */
 int is_it_cmd(info_t *, char *);
@@ -111,17 +167,12 @@ char *sear_p(info_t *, char *, char *);
 void print_str(char *);
 int print_char(char);
 
-/* len.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *_verify(const char *, const char *);
-char *_strcat(char *, char *);
-
-/* len_1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+/* environ.c */
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _rm_env(info_t *);
+int populate_env_list(info_t *);
 
 /* exits.c */
 char *_strncpy(char *, char *, int);
@@ -136,59 +187,4 @@ void ffree(char **);
 void *_reloc(void *, unsigned int, unsigned int);
 int interactive(info_t *);
 int is_delim(char, char *);
-
-
-/* er.c */
-int _erratoi(char *);
-void print_er(info_t *, char *);
-int p_dec(int, int);
-char *conv_nbr(long int, int, int);
-void rm_c(char *);
-
-/* func.c */
-int _e_exit(info_t *);
-int free_s(void **);
-ssize_t read_buf(info_t *info, char *buf, size_t *i);
-
-/* get_line.c */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
-
-/* get_i.c */
-void _clear(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
-
-/* environ.c */
-char *_getenv(info_t *, const char *);
-int _myenv(info_t *);
-int _mysetenv(info_t *);
-int _rm_env(info_t *);
-int populate_env_list(info_t *);
-
-/* get_env.c */
-char **get_env(info_t *);
-int _unsetenv(info_t *, char *);
-int set_env(info_t *, char *, char *);
-
-/* lists.c */
-
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
-
-/* lists1.c */
-size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
-list_t *node__verify(list_t *, char *, char);
-
-/* vars.c */
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
-
 #endif

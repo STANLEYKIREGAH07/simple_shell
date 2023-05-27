@@ -118,6 +118,35 @@ void see_cmd(info_t *info)
 }
 
 /**
+ * _strdup - creates a copy of a string.
+ * @str: the string to be copied.
+ * Return: pointer to the copied string.
+ */
+
+char *_strdup(const char *str)
+{
+	int length;
+	char *a;
+
+	length = 0;
+
+	if (str == NULL)
+		return (NULL);
+
+	while (*str++)
+		length++;
+
+	a = malloc(sizeof(char) * (length + 1));
+
+	if (!a)
+		return (NULL);
+
+	for (length++; length--;)
+		a[length] = *--str;
+	return (a);
+}
+
+/**
  * exec_cmd - Spawns a new execution thread to execute the given command.
  * @info: the input and output data structure.
  * Return: void.
