@@ -5,6 +5,7 @@
  * @info: Container holding potential parameters.
  *  Return: exit.
  */
+
 int _e_exit(info_t *info)
 {
 	int exitcheck;

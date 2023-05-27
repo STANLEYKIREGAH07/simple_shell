@@ -50,14 +50,15 @@ int main_sh(info_t *info, char **av)
  * find__cmd - search command.
  * @info: the information structure containing,
  * the parameter and return details.
- * Return: -1 in case the built-in command is not located,
- * 0 upon successful execution of the built-in command,
- * 1 if the built-in command is found but not successful,
- * -2 if the built-in command signals an exit().
+ * Return: -1 if the predefined instruction is not found,
+ * 0 when the predefined instruction is successfully executed,
+ * 1 when the predefined instruction is found but not successful,
+ * -2 if the predefined instruction triggers an exit().
  */
 int find__cmd(info_t *info)
 {
-	int i, built_in_ret = -1;
+	int i, j;
+
 	builtin_table builtintbl[] = {
 		{"exit", _e_exit},
 		{"env", _myenv},
@@ -66,14 +67,16 @@ int find__cmd(info_t *info)
 		{NULL, NULL}
 	};
 
+	j = -1;
+
 	for (i = 0; builtintbl[i].type; i++)
 		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[i].func(info);
+			j = builtintbl[i].func(info);
 			break;
 		}
-	return (built_in_ret);
+	return (j);
 }
 
 /**
@@ -83,8 +86,10 @@ int find__cmd(info_t *info)
  */
 void see_cmd(info_t *info)
 {
-	char *path = NULL;
+	char *path;
 	int i, k;
+
+	path = NULL;
 
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)

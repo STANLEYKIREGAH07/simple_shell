@@ -121,18 +121,18 @@ char **get_env(info_t *);
 int _unsetenv(info_t *, char *);
 int set_env(info_t *, char *, char *);
 
-/* lists.c */
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
+/* list.c */
+list_t *_add_end(list_t **, const char *, int);
+size_t _print_str_list(const list_t *);
+int rm_node(list_t **, unsigned int);
+void _list_free(list_t **);
 
-/* lists1.c */
+/* list_1.c */
 size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
+char **str_l(list_t *);
 list_t *node__verify(list_t *, char *, char);
 
-/* shell_loop.c */
+/* shell_env.c */
 int main_sh(info_t *, char **);
 int find__cmd(info_t *);
 void see_cmd(info_t *);
@@ -153,12 +153,12 @@ char *_verify(const char *, const char *);
 char *_strcat(char *, char *);
 char *_strcpy(char *, char *);
 
-/* vars.c */
+/* variable.c */
 int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+int change_a(info_t *);
+int re_var(info_t *);
+int re_str(char **, char *);
 
 /* ex_cmd.c */
 int is_it_cmd(info_t *, char *);

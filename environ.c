@@ -7,7 +7,7 @@
  */
 int _myenv(info_t *info)
 {
-	print_list_str(info->env);
+	_print_str_list(info->env);
 	return (0);
 }
 
@@ -84,7 +84,7 @@ int populate_env_list(info_t *info)
 	node = NULL;
 
 	for (i = 0; environ[i]; i++)
-		add_node_end(&node, environ[i], 0);
+		_add_end(&node, environ[i], 0);
 	info->env = node;
 	return (0);
 }
